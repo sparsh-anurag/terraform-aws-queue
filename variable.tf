@@ -42,19 +42,22 @@ variable "deployment_mode" {
 
 variable "subnet_ids" {
   description = "The VPC Subnet IDs to launch in"
+  type        = list(string)
+}
+
+variable "ec2_subnet_id" {
+  description = "The VPC Subnet IDs to launch in"
   type        = string
 }
 
 variable "ActiveMQ_username" {
-  type        = list(string)
+  type        = string
   description = "Admin username"
-  default     = []
 }
 
 variable "ActiveMQ_password" {
-  type        = list(string)
+  type        = string
   description = "Admin password"
-  default     = []
   sensitive   = true
 }
 

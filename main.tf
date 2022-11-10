@@ -8,7 +8,7 @@ resource "aws_mq_broker" "AWS-ActiveMQ" {
 	host_instance_type  = var.host_instance_type
 	security_groups     = var.security_groups
 	deployment_mode     = var.deployment_mode
-	subnet_ids 		    = var.subnet_ids[0]
+	subnet_ids 		    = var.subnet_ids
 	publicly_accessible = var.publicly_accessible
 
 
@@ -40,7 +40,7 @@ resource "aws_instance" "ec2" {
 	count                   = !var.create_aws_ActiveMQ && var.create_aws_ec2_RabbitMQ ? 1 : 0
 	ami                     = data.aws_ami.amazon-linux-2.id
 	instance_type           = var.instance_type
-	subnet_id               = var.subnet_ids[0]
+	subnet_id               = var.ec2_subnet_id
 	vpc_security_group_ids  = var.security_groups
 	key_name                = var.key_name
 	iam_instance_profile    = var.iam_instance_profile
